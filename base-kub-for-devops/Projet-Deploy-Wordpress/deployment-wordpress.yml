@@ -27,4 +27,14 @@ spec:
         - name: WORDPRESS_DB_NAME
           value: wordpress
         - name: WORPRESS_DB_HOST
-          value: 
+          value: mysql
+      ports:
+      - containerPort: 80
+        name: wordpress
+      volumeMounts:
+      - name: wordpress-storage
+        mountPath: /var/www/html
+      volumes:
+      - name: wordpress-storage
+        persistentVolumeClaim:
+          claimName: pvc-wordpress
