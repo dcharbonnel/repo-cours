@@ -17,7 +17,7 @@ kubectl apply -f namespace.yml
 
 ```bash
 kubectl apply -f .
-```bash
+```
 
 ## Accéder à l'application Word
 
