@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress
+  namespace: ns-wordpress
   labels:
     app: wordpress
     role: frontend
@@ -27,7 +28,7 @@ spec:
         - name: WORDPRESS_DB_NAME
           value: wordpress
         - name: WORDPRESS_DB_HOST
-          value: mysql
+          value: service-mysql
         ports:
         - containerPort: 80
         volumeMounts:
