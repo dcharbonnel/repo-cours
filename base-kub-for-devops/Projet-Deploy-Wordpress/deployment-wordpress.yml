@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+  labels:
+    app: wordpress
+    role: frontent
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      role: frontent
+  template:
+    metadata:
+      labels:
+        role: frontent
+        app: wordpress
+    spec:
+      containers:
+      - name: wordpress
+        image: wordpress:6.3-apache
+        env:
+        - name: WORDPRESS_DB_USER
+          value: wordpress
+        - name: WORDPRESS_DB_PASSWORD
+          value: "${password}"
+        - name: WORDPRESS_DB_NAME
+          value: wordpress
+        - name: WORPRESS_DB_HOST
+          value: 
