@@ -1,0 +1,13 @@
+---
+- hosts: prod
+  become: true
+  vars:
+    system_user: admin
+    compose_binary_dir: /usr/bin/
+  vars_files:
+    - files/secrets/credential.yml
+  pre_tasks:
+    - name: create wwww-data
+      user: name=www-data state=present
+  roles:
+    - { role: ansible-role-containerized-wordpress } 
